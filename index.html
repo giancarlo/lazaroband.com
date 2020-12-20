@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Lazaro - Latin Rock</title>
+  <meta name="description" content="Lazaro, Latin Rock Band, Maryland, Washington DC, Virginia">
+  <meta name="author" content="Giancarlo Bellido">
+  <meta name="viewport" content="width=700">
+  <link rel="stylesheet" href="styles.css">
+  <link href='http://fonts.googleapis.com/css?family=Titillium+Web:300' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<ul class="social fixed">
+<li><a class="twitter" target="_blank" href="http://www.twitter.com/lazaroband">twitter</a></li>
+<li><a class="facebook" target="_blank" href="http://www.facebook.com/LazaroBand">facebook</a></li>
+</ul>
+<nav>
+<ul class="nav fixed">
+<li><a class="smooth-scroll" href="#first">home</a></li>
+<li><a class="smooth-scroll" href="#second">media</a></li>
+<li><a class="smooth-scroll" href="#third">about</a></li>
+</ul>
+</nav>
+  <div id="main" role="main">
+	<section id="first" class="story" data-speed="8" data-type="background">    	
+		<div class="logo" data-type="sprite" data-offsetY="10" data-Xposition="50%" data-speed="-2"></div>		
+		<article>
+			<iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Fusers%2F19091430&auto_play=false&show_artwork=true&color=111111&theme_color=111111"></iframe>
+			<div class="intro">
+				<h2>check out our</h2>
+				<h3>new demo</h3>
+				<ul class="music">
+					<li><a target="_blank" href="https://itunes.apple.com/us/artist/lazaro/id499624193">iTunes</a></li>
+					<li><a target="_blank" href="http://www.cdbaby.com/lazaro12">cdbaby</a></li><br/>
+					<li><a target="_blank" href="http://www.soundcloud.com/lazaro-rock">soundcloud</a></li>
+					<li><a target="_blank" href="http://www.youtube.com/lazaroband">youtube</a></li>
+				</ul>
+				&nbsp;
+			</div>
+	    </article>
+	    <div id="credit">Photography by <a href="https://www.facebook.com/ESImages">Erik Sharar</a><br/>Website by <a href="http://bellido.us">Giancarlo Bellido</a></div>
+	</section>
+	<section id="second" class="story" data-speed="4" data-type="background">
+		<article>
+		<div>
+		<iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Flazaroband&amp;width=400&amp;height=558&amp;show_faces=true&amp;colorscheme=dark&amp;stream=true&amp;show_border=false&amp;header=false&amp;appId=25342328982" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:400px; height:558px;" allowTransparency="true"></iframe>
+		</div><a class="twitter-timeline" href="https://twitter.com/LazaroBand" data-widget-id="348137721279176704" data-tweet-limit="5" data-chrome="nofooter transparent">Tweets by @LazaroBand</a>
+		</article>
+
+	</section>
+	<section id="third" class="story" data-speed="8" data-type="background" data-offsetY="250">
+    	<article>
+    		<h2>This is LAZARO</h2>
+    		<p>
+    		From left to right: Pablo Salazar, 3rd guitarist and elecronic pianist.
+    		Arturo Garcia extravagant rhythm guitarist, back up vocalist, and 
+deep intellectual award winning song writer. Kevin Andrade with his crazy unique style on drums. Giancarlo Bellido with his awe dropping lead vocals, songwriter, and slinging zingy solos on lead guitar. Oscar Amaya, the rock hard headbanging bassist!   
+    		</p>
+    		<p>
+    			Throughout the past year Lazaro has performed at events, fundraisers, bars, and bigger venues like The State Theater in Virginia and The Howard Theatre in DC. Lazaro's goals are nowhere near met.
+    		</p>
+		    <p style="text-align: center">
+		    <a href="mailto:rock@lazaroband.com" class="mail">rock@lazaroband.com</a>
+		    </p>
+		    <ul class="music">
+			<li><a target="_blank" href="https://itunes.apple.com/us/artist/lazaro/id499624193">iTunes</a></li>
+			<li><a target="_blank" href="http://www.cdbaby.com/lazaro12">cdbaby</a></li>
+			<li><a target="_blank" href="http://www.soundcloud.com/lazaro-rock">soundcloud</a></li>
+			<li><a target="_blank" href="http://www.youtube.com/lazaroband">youtube</a></li>
+		    </ul>
+    	</article>
+	</section>	
+  </div>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+ <script> 
+$(function(){
+	
+var
+	// Cache the Window object
+	$window = $(window),
+	links = $('a.smooth-scroll'),
+	initLinks = function() {
+		links.each(function() {
+			this.onclick = (function() {
+				scrollTo(this.left, this.top);
+				return false;
+			}).bind($(this.hash).offset());
+		});
+	},
+	
+	scrollTo = function(x, y, delay)
+	{
+		delay = delay || 200;
+	var
+		xi = pageXOffset, yi = pageYOffset,
+		dx = (x - xi)/delay, dy = (y - yi)/delay,
+		fn = function() { window.scrollTo(this.x, this.y); },
+		x = xi, y = yi,
+		t=0
+	;
+		while (delay--)
+			setTimeout(fn.bind({ x: x+=dx, y: y+=dy }), t++)
+	}
+;
+	
+	// Cache the Y offset and the speed of each sprite
+	$('[data-type]').each(function() {	
+		$(this).data('offsetY', parseInt($(this).attr('data-offsetY')));
+		$(this).data('Xposition', $(this).attr('data-Xposition'));
+		$(this).data('speed', $(this).attr('data-speed'));
+	});
+	
+	$window.resize(function() {
+		$('section').css('min-height', $window.height());
+		initLinks();
+	});
+	
+	$window.resize();
+	
+	// For each element that has a data-type attribute
+	$('section[data-type="background"]').each(function(){
+	
+	
+		// Store some variables based on where we are
+		var $self = $(this),
+			offsetCoords = $self.offset(),
+			topOffset = offsetCoords.top;
+		
+		// When the window is scrolled...
+	    $(window).scroll(function() {
+	
+			// If this section is in view
+			if ( ($window.scrollTop() + $window.height()) > (topOffset) &&
+				 ( (topOffset + $self.height()) > $window.scrollTop() ) ) {
+	
+				// Scroll the background at var speed
+				// the yPos is a negative value because we're scrolling it UP!								
+				var yPos = -($window.scrollTop() / $self.data('speed')); 
+				
+				// If this element has a Y offset then add it on
+				if ($self.data('offsetY')) {
+					yPos += $self.data('offsetY');
+				}
+				
+				// Put together our final background position
+				var coords = '50% '+ yPos + 'px';
+
+				// Move the background
+				$self.css({ backgroundPosition: coords });
+				
+				// Check for other sprites in this section	
+				$('[data-type="sprite"]', $self).each(function() {
+					
+					// Cache the sprite
+					var $sprite = $(this);
+					
+					// Use the same calculation to work out how far to scroll the sprite
+					var yPos = -($window.scrollTop() / $sprite.data('speed'));					
+					var coords = $sprite.data('Xposition') + ' ' + (yPos + $sprite.data('offsetY')) + 'px';
+					
+					$sprite.css({ backgroundPosition: coords });													
+					
+				}); // sprites
+			
+			}; // in view
+	
+		}); // window scroll
+			
+	});	// each data-type
+	
+	
+	// TWITTER WIDGET
+	!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;
+	js.async=true;
+	js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+
+}); // document ready
+
+ // Google Analytics
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26021003-4']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+ 
+  </script>
+ <!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+</body>
+</html>
